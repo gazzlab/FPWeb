@@ -72,6 +72,7 @@ class RecordsDat(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
 
+  subjectID = db.Column(db.String(50))
   angleOfXVPlus = db.Column(db.Float())
   cueProbeTime = db.Column(db.Float())
   currentReleaseReactionTimeGoal = db.Column(db.Float())
@@ -87,6 +88,7 @@ class RecordsDat(db.Model):
   timeStamp = db.Column(db.Float())
 
   def __init__(self,
+    subjectID =-1.0,
     angleOfXVPlus=-1.0,
     cueProbeTime=-1.0,
     currentReleaseReactionTimeGoal=-1.0,
@@ -102,6 +104,7 @@ class RecordsDat(db.Model):
     timeStamp=-1.0,
     ):
     log.debug('Creating DAT record')
+    self.subjectID = subjectID
     self.angleOfXVPlus = angleOfXVPlus
     self.cueProbeTime = cueProbeTime
     self.currentReleaseReactionTimeGoal = currentReleaseReactionTimeGoal
@@ -125,6 +128,7 @@ class RecordsMediTrain(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
 
+  subjectID = db.Column(db.String(50))
   date = db.Column(db.DateTime())
   response = db.Column(db.Integer())
   sessionCount = db.Column(db.Integer())
@@ -132,6 +136,7 @@ class RecordsMediTrain(db.Model):
   duration = db.Column(db.Integer())
 
   def __init__(self,
+    subjectID =-1.0,
     date=-1.0,
     response=-1.0,
     sessionCount=-1.0,
@@ -139,6 +144,7 @@ class RecordsMediTrain(db.Model):
     duration=-1.0,
     ):
     log.debug('Creating MediTrain record, date: %r', date)
+    self.subjectID = subjectID
     self.date = date
     self.response = response
     self.sessionCount = sessionCount
@@ -156,6 +162,7 @@ class RecordsTrainCat(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
 
+  subjectID = db.Column(db.String(50))
   index = db.Column(db.Integer())
   sessionID = db.Column(db.Integer())
   categoryID = db.Column(db.Integer())
@@ -169,6 +176,7 @@ class RecordsTrainCat(db.Model):
   accuracy = db.Column(db.String(50))
 
   def __init__(self,
+    subjectID =-1.0,
     index = -1.0,
     sessionID = -1.0,
     categoryID = -1.0,
@@ -182,6 +190,7 @@ class RecordsTrainCat(db.Model):
     accuracy = -1.0,
     ):
     log.debug('Creating TrainCat record, sessionID: %r', sessionID)
+    self.subjectID = subjectID
     self.index = index
     self.sessionID = sessionID
     self.categoryID = categoryID
