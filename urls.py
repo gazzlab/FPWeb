@@ -56,7 +56,7 @@ def process_batch(data):
     if hasattr(record_class, 'field_map'):
       log.debug('\tprocessing record with field_map: %r', record)
       f = record_class.field_map.get
-      d = {f(k, k): v for k, v in record}
+      d = {f(k, k): v for k, v in record.iteritems()}
       d['subjectID'] = data['subjectID']
       record = record_class(**d)
     else:
