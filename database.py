@@ -72,6 +72,7 @@ class RecordsDat(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
 
+  subjectID = db.Column(db.String(50))
   angleOfXVPlus = db.Column(db.Float())
   cueProbeTime = db.Column(db.Float())
   currentReleaseReactionTimeGoal = db.Column(db.Float())
@@ -87,6 +88,7 @@ class RecordsDat(db.Model):
   timeStamp = db.Column(db.Float())
 
   def __init__(self,
+    subjectID =-1.0,
     angleOfXVPlus=-1.0,
     cueProbeTime=-1.0,
     currentReleaseReactionTimeGoal=-1.0,
@@ -102,6 +104,7 @@ class RecordsDat(db.Model):
     timeStamp=-1.0,
     ):
     log.debug('Creating DAT record')
+    self.subjectID = subjectID
     self.angleOfXVPlus = angleOfXVPlus
     self.cueProbeTime = cueProbeTime
     self.currentReleaseReactionTimeGoal = currentReleaseReactionTimeGoal
@@ -125,6 +128,7 @@ class RecordsMediTrain(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
 
+  subjectID = db.Column(db.String(50))
   date = db.Column(db.DateTime())
   response = db.Column(db.Integer())
   sessionCount = db.Column(db.Integer())
@@ -132,6 +136,7 @@ class RecordsMediTrain(db.Model):
   duration = db.Column(db.Integer())
 
   def __init__(self,
+    subjectID =-1.0,
     date=-1.0,
     response=-1.0,
     sessionCount=-1.0,
@@ -139,6 +144,7 @@ class RecordsMediTrain(db.Model):
     duration=-1.0,
     ):
     log.debug('Creating MediTrain record, date: %r', date)
+    self.subjectID = subjectID
     self.date = date
     self.response = response
     self.sessionCount = sessionCount
@@ -156,6 +162,7 @@ class RecordsTrainCat(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
 
+  subjectID = db.Column(db.String(50))
   index = db.Column(db.Integer())
   sessionID = db.Column(db.Integer())
   categoryID = db.Column(db.Integer())
@@ -169,6 +176,7 @@ class RecordsTrainCat(db.Model):
   accuracy = db.Column(db.String(50))
 
   def __init__(self,
+    subjectID =-1.0,
     index = -1.0,
     sessionID = -1.0,
     categoryID = -1.0,
@@ -182,6 +190,7 @@ class RecordsTrainCat(db.Model):
     accuracy = -1.0,
     ):
     log.debug('Creating TrainCat record, sessionID: %r', sessionID)
+    self.subjectID = subjectID
     self.index = index
     self.sessionID = sessionID
     self.categoryID = categoryID
@@ -209,11 +218,6 @@ class RecordsMediTrainPre(db.Model):
     }
 
   id = db.Column(db.Integer, primary_key=True)
-
-  #MediTrainPre_answerNames={
-  #'How noisy is your environment right now?':environmentalNoise',
-  #'How awake/alert are you right now, on a scale of 1-4?':'alertness',
-  #'Have you consumed any caffeine in the last hour?':'caffeineHour'}
 
   subjectID = db.Column(db.String(50))
   environmentalNoise = db.Column(db.String(50))
@@ -330,9 +334,9 @@ class RecordsMediTrainSaliva(db.Model):
   timeStamp = db.Column(db.Float())
 
   def __init__(self,
-    subjectID=-1.0,
-    salivaSample=-1.0,
-    timeStamp=-1.0,
+    subjectID,
+    salivaSample,
+    timeStamp,
     ):
     self.subjectID = subjectID
     self.salivaSample = salivaSample
@@ -347,6 +351,7 @@ class RecordsDATPre(db.Model):
   __tablename__ = 'rec7'
 
   field_map = {
+    'iPad #:':'iPadID',
     'Did anything good or bad happen today yet?': 'whatHappened',
     'Have you had coffee yet today?': 'coffeeYet',
     'How are you feeling today, on a scale from 0-5?': 'feelingToday',
@@ -369,6 +374,7 @@ class RecordsDATPre(db.Model):
   #'How many days a week do you drink coffee in a normal week?'=coffeeDaysPerWeek
 
   subjectID = db.Column(db.String(50))
+  iPadID = db.Column(db.String(50))
   whatHappened = db.Column(db.String(50))
   feelingToday=db.Column(db.String(50))
   morningWakeTime=db.Column(db.String(50))
@@ -381,6 +387,7 @@ class RecordsDATPre(db.Model):
 
   def __init__(self,
     subjectID=-1.0,
+    iPadID=-1.0,
     whatHappened=-1.0,
     feelingToday=-1.0,
     morningWakeTime=-1.0,
@@ -410,20 +417,23 @@ class RecordsDATPost(db.Model):
   __tablename__ = 'rec8'
 
   field_map = {
-    'Did anything good or bad happen today yet?': 'whatHappened',
-    'How are you feeling today, on a scale from 0-5?': 'feelingToday',
-    'How long did it take you to fall asleep last night, from getting into bed to actually falling asleep?': 'sleepOnsetHours',
-    'How many hours of sleep did you get last night?': 'hoursSleep',
-    'What time did you wake up this morning?': 'morningWakeTime',
+    'What level did you get to?'=levelDATPost,
+    'How enjoyable was this training session, on a scale of 1-5?'=enjoyableTraining,
+    'How distracted were you during this training session, on a scale of 1-5?'=distractedTraining,
+    'In what position were you playing the game?'=gamePosition,
+    'Was the iPad:'=iPadPosition,
     }
-
+  
+###commented questions below were from DATpre, not DATpost
+  #  'Did anything good or bad happen today yet?': 'whatHappened',
+  #  'How are you feeling today, on a scale from 0-5?': 'feelingToday',
+  #  'How long did it take you to fall asleep last night, from getting into bed to actually falling asleep?': 'sleepOnsetHours',
+  #  'How many hours of sleep did you get last night?': 'hoursSleep',
+  #  'What time did you wake up this morning?': 'morningWakeTime',
+    
   id = db.Column(db.Integer, primary_key=True)
 
-  #'What level did you get to?'=levelDATPost
-  #'How enjoyable was this training session, on a scale of 1-5?'=enjoyableTraining
-  #'How distracted were you during this training session, on a scale of 1-5?'=distractedTraining
-  #'In what position were you playing the game?'=gamePosition
-  #'Was the iPad:'=iPadPosition
+
 
   subjectID = db.Column(db.String(50))
   levelDATPost = db.Column(db.String(50))
