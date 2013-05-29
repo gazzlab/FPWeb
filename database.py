@@ -334,9 +334,9 @@ class RecordsMediTrainSaliva(db.Model):
   timeStamp = db.Column(db.Float())
 
   def __init__(self,
-    subjectID,
-    salivaSample,
-    timeStamp,
+    subjectID=-1.0,
+    salivaSample=-1.0,
+    timeStamp=-1.0,
     ):
     self.subjectID = subjectID
     self.salivaSample = salivaSample
