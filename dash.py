@@ -23,7 +23,7 @@ studyID_to_record_class = {
   'meditrain': RecordsMediTrain,
   'traincat':RecordsTrainCat,
   'datpre':RecordsDATPre,
-  'datpost':RecordsDATPost,
+#  'datpost':RecordsDATPost,
   'meditrainpre':RecordsMediTrainPre,
   'meditrainpost':RecordsMediTrainPost,
   'meditrainsaliva':RecordsMediTrainSaliva,

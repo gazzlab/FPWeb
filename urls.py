@@ -1,4 +1,6 @@
 import json
+from itertools import groupby
+from operator import itemgetter
 from server import envey, lo, css, postload, JSON_convert_and_process
 from pages import (
   home_page,
@@ -39,10 +41,22 @@ for page in (home_page, login_page, logout_page, main_page, study_page,
 log = logging.getLogger('process_batch')
 
 
+def partition_records(data, field_map={}, _ts=itemgetter('timeStamp')):
+  f = field_map.get
+  data.sort(key=_ts)
+  for ts, fields in groupby(data, _ts):
+    record = {'timeStamp': ts}
+    for field in fields:
+      name = field['prompt']
+      record[f(name, name)] = field['answer']
+    yield record
+
+
 def process_batch(data):
   log.debug('processing data: %r', data)
   studyID = data['studyID']
   subjectID = data['subjectID']
+
   record_class = studyID_to_record_class.get(studyID.lower())
   if record_class is None:
     def record_class(**e):
@@ -57,20 +71,22 @@ def process_batch(data):
         subjectID=subjectID,
         raw_data=repr(e),
         )
+
   log.debug('Using record class: %r', record_class)
-  for record in data['data']:
-    if hasattr(record_class, 'field_map'):
+  if hasattr(record_class, 'field_map'):
+    for record in partition_records(data['data'], record_class.field_map):
+      record['subjectID'] = subjectID
       log.debug('\tprocessing record with field_map: %r', record)
-      f = record_class.field_map.get
-      d = {f(k, k): v for k, v in record}
-      d['subjectID'] = data['subjectID']
-      record = record_class(**d)
-    else:
+      record = record_class(**record)
+      db.session.add(record)
+
+  else:
+    for record in data['data']:
       log.debug('\tprocessing record: %r', record)
       record['subjectID'] = data['subjectID']  #Simon thinks that this might fix some of our problems
       record = record_class(**record)
-      #d = record_class(**record)
-    db.session.add(record)
+      db.session.add(record)
+
   db.session.commit()
   return repr(data)
 
