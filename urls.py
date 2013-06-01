@@ -16,12 +16,6 @@ from database import (
   RecordsDat,
   RecordsMediTrain,
   RecordsTrainCat,
-  RecordsMediTrainPre,
-  RecordsMediTrainPost,
-  RecordsMediTrainSleep,
-  RecordsMediTrainSaliva,
-  RecordsDATPre,
-  RecordsDATPost,
   )
 from login_stuff import login, logout
 from dash import dash, study, studyID_to_record_class, profile
@@ -67,9 +61,7 @@ def process_batch(data):
       record = record_class(**d)
     else:
       log.debug('\tprocessing record: %r', record)
-      record['subjectID'] = data['subjectID']  #Simon thinks that this might fix some of our problems
       record = record_class(**record)
-      #d = record_class(**record)
     db.session.add(record)
   db.session.commit()
   return repr(data)
