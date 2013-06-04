@@ -220,11 +220,6 @@ class RecordsMediTrainPre(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
 
-  #MediTrainPre_answerNames={
-  #'How noisy is your environment right now?':environmentalNoise',
-  #'How awake/alert are you right now, on a scale of 1-4?':'alertness',
-  #'Have you consumed any caffeine in the last hour?':'caffeineHour'}
-
   subjectID = db.Column(db.String(50))
   environmentalNoise = db.Column(db.String(50))
   alertness = db.Column(db.String(50))
@@ -357,6 +352,7 @@ class RecordsDATPre(db.Model):
   __tablename__ = 'rec7'
 
   field_map = {
+    'iPad #:':'iPadID',
     'Did anything good or bad happen today yet?': 'whatHappened',
     'Have you had coffee yet today?': 'coffeeYet',
     'Have you consumed any caffeine in the last hour?': 'coffeeYet',  # IS THIS SUPPOSED TO BE ONE OF THESE?
@@ -381,6 +377,7 @@ class RecordsDATPre(db.Model):
   #'How many days a week do you drink coffee in a normal week?'=coffeeDaysPerWeek
 
   subjectID = db.Column(db.String(50))
+  iPadID = db.Column(db.String(50))
   whatHappened = db.Column(db.String(50))
   feelingToday=db.Column(db.String(50))
   morningWakeTime=db.Column(db.String(50))
@@ -393,6 +390,7 @@ class RecordsDATPre(db.Model):
 
   def __init__(self,
     subjectID=-1.0,
+    iPadID=-1.0,
     whatHappened=-1.0,
     feelingToday=-1.0,
     morningWakeTime=-1.0,
@@ -422,20 +420,23 @@ class RecordsDATPost(db.Model):
   __tablename__ = 'rec8'
 
   field_map = {
-    'Did anything good or bad happen today yet?': 'whatHappened',
-    'How are you feeling today, on a scale from 0-5?': 'feelingToday',
-    'How long did it take you to fall asleep last night, from getting into bed to actually falling asleep?': 'sleepOnsetHours',
-    'How many hours of sleep did you get last night?': 'hoursSleep',
-    'What time did you wake up this morning?': 'morningWakeTime',
+    'What level did you get to?'=levelDATPost,
+    'How enjoyable was this training session, on a scale of 1-5?'=enjoyableTraining,
+    'How distracted were you during this training session, on a scale of 1-5?'=distractedTraining,
+    'In what position were you playing the game?'=gamePosition,
+    'Was the iPad:'=iPadPosition,
     }
-
+  
+###commented questions below were from DATpre, not DATpost
+  #  'Did anything good or bad happen today yet?': 'whatHappened',
+  #  'How are you feeling today, on a scale from 0-5?': 'feelingToday',
+  #  'How long did it take you to fall asleep last night, from getting into bed to actually falling asleep?': 'sleepOnsetHours',
+  #  'How many hours of sleep did you get last night?': 'hoursSleep',
+  #  'What time did you wake up this morning?': 'morningWakeTime',
+    
   id = db.Column(db.Integer, primary_key=True)
 
-  #'What level did you get to?'=levelDATPost
-  #'How enjoyable was this training session, on a scale of 1-5?'=enjoyableTraining
-  #'How distracted were you during this training session, on a scale of 1-5?'=distractedTraining
-  #'In what position were you playing the game?'=gamePosition
-  #'Was the iPad:'=iPadPosition
+
 
   subjectID = db.Column(db.String(50))
   levelDATPost = db.Column(db.String(50))

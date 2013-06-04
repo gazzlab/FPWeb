@@ -18,6 +18,12 @@ from database import (
   RecordsDat,
   RecordsMediTrain,
   RecordsTrainCat,
+  RecordsMediTrainPre,
+  RecordsMediTrainPost,
+  RecordsMediTrainSleep,
+  RecordsMediTrainSaliva,
+  RecordsDATPre,
+  RecordsDATPost,
   )
 from login_stuff import login, logout
 from dash import dash, study, studyID_to_record_class, profile
@@ -77,6 +83,7 @@ def process_batch(data):
   else:
     for record in data['data']:
       log.debug('\tprocessing record: %r', record)
+      record['subjectID'] = data['subjectID']  #Simon thinks that this might fix some of our problems
       record = record_class(**record)
       db.session.add(record)
 
