@@ -420,11 +420,11 @@ class RecordsDATPost(db.Model):
   __tablename__ = 'rec8'
 
   field_map = {
-    'What level did you get to?'='levelDATPost',
-    'How enjoyable was this training session, on a scale of 1-5?'='enjoyableTraining',
-    'How distracted were you during this training session, on a scale of 1-5?'='distractedTraining',
-    'In what position were you playing the game?'='gamePosition',
-    'Was the iPad:'='iPadPosition',
+    'What level did you get to?':'levelDATPost',
+    'How enjoyable was this training session, on a scale of 1-5?':'enjoyableTraining',
+    'How distracted were you during this training session, on a scale of 1-5?':'distractedTraining',
+    'In what position were you playing the game?':'gamePosition',
+    'Was the iPad:':'iPadPosition',
     }
   
 ###commented questions below were from DATpre, not DATpost
