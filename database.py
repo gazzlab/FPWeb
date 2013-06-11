@@ -361,7 +361,8 @@ class RecordsDATPre(db.Model):
     'How long did it take you to fall asleep last night, from getting into bed to actually falling asleep?': 'sleepOnsetHours',
     'How many days a week do you drink coffee in a normal week?': 'coffeeDaysPerWeek',
     'How many hours of sleep did you get last night?': 'hoursSleep',
-    'On a scale from 1-10, how "hyper" or "energetic" are you feeling today so far?': 'energetic',
+    #'On a scale from 1-10, how "hyper" or "energetic" are you feeling today so far?': 'energetic',
+    'On a scale from 1-10, how hyper or energetic are you feeling today so far?': 'energetic',
     'What time did you wake up this morning?': 'morningWakeTime',
     }
 
