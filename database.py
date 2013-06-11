@@ -236,7 +236,7 @@ class RecordsMediTrainPre(db.Model):
     self.subjectID = subjectID
     self.environmentalNoise = environmentalNoise
     self.alertness = alertness
-    self.caffeineHour = caffieneHour
+    self.caffeineHour = caffeineHour
     self.timeStamp = timeStamp
 
 
