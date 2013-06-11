@@ -128,6 +128,7 @@ def main_dash(c, user, db, record_classes, ra, **extra):
   def r(row, rc, **extra):
     row.td.a(rc.study_ID, href='study/' + rc.study_ID) # TODO fix the SCCRIPT_thingy....
     row.td(str(rc.query.count()))
+    row.td.a('download CSV', href='csv/' + rc.study_ID)
 
   do_table(
     c.div,

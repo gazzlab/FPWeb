@@ -1,4 +1,6 @@
-from flask import request, abort
+from StringIO import StringIO
+from csv import writer
+from flask import request, abort, Response
 from flask.ext.login import login_required, current_user
 from templates import base
 from database import (
@@ -65,6 +67,27 @@ def study(studyID):
   page['title'] = page['page_title'] = \
     page['title'].format(studyID=rc.study_ID)
   return str(base(**page))
+
+
+def csv_write(record_class):
+  f = StringIO()
+  w = writer(f)
+  ww = w.writerow
+  fields = []
+  fields.sort()
+  ww(fields)
+  for record in record_class.query.all():
+    ww([getattr(record, field) for field in fields])
+  return f.getvalue()
+
+
+@login_required
+def csv(studyID):
+  rc = studyID_to_record_class.get(studyID.lower())
+  if not rc:
+    abort(404)
+  data = csv_write(rc)
+  return Response(response=data, status=200, content_type='text/csv')
 
 
 @login_required
