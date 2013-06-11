@@ -20,8 +20,8 @@ TESTING = True
 
 app = Flask(__name__)
 app.secret_key = sekrit
-#app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_CONN % MYSQL_CONN_INFO
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_CONN % MYSQL_CONN_INFO
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 app.config['SQLALCHEMY_POOL_RECYCLE'] = 60 * 60 # Once an hour.
 app.debug = TESTING
 

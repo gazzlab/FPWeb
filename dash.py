@@ -69,11 +69,21 @@ def study(studyID):
   return str(base(**page))
 
 
+def get_fields(record_class):
+  try:
+    fm = record_class.field_map
+  except AttributeError:
+    fields = []
+  else:
+    fields = fm.values()
+  return fields
+
+
 def csv_write(record_class):
   f = StringIO()
   w = writer(f)
   ww = w.writerow
-  fields = []
+  fields = get_fields(record_class)
   fields.sort()
   ww(fields)
   for record in record_class.query.all():
