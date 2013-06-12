@@ -26,7 +26,7 @@ from database import (
   RecordsDATPost,
   )
 from login_stuff import login, logout
-from dash import dash, study, studyID_to_record_class, profile
+from dash import dash, study, csv, studyID_to_record_class, profile
 import logging
 
 
@@ -103,6 +103,8 @@ def urls(app):
   app.add_url_rule('/dash', 'dash', envey(PAGE=main_page)(dash))
 
   app.add_url_rule('/study/<studyID>', 'study', envey(PAGE=study_page)(study))
+
+  app.add_url_rule('/csv/<studyID>', 'csv', csv)
 
   pro = envey(PAGE=profile_page)(profile)
   pro.methods = ['GET', 'POST']

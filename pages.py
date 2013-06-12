@@ -128,6 +128,8 @@ def main_dash(c, user, db, record_classes, ra, **extra):
   def r(row, rc, **extra):
     row.td.a(rc.study_ID, href='study/' + rc.study_ID) # TODO fix the SCCRIPT_thingy....
     row.td(str(rc.query.count()))
+    row.td.a('download CSV', href='csv/' + rc.study_ID)
+    
 
   do_table(
     c.div,
@@ -165,22 +167,20 @@ main_page = dict(
   )
 
 
-def study(c, user, db, record_class, **extra):
+def study(c, user, db, record_class, record_fields, **extra):
   studyID = record_class.study_ID
 
-  def r(row, record, **extra):
-    #t = datetime.utcfromtimestamp(record.timeStamp)
-    t = datetime.fromtimestamp(record.timeStamp) #replaces UTC with local time    
-    row.td(t.isoformat(' '))
+  def r(row, record, record_fields, **extra):
+    for field in record_fields:
+      row.td(str(getattr(record, field, '--')))
 
   do_table(
     c.div,
     "Records",
-    #Headers should be defined by record_class (ie: studyID-specific)
-    #Would like to have Headers here for *all* fields in that rec
-    ('Timestamp', 'SubjectID', 'Laa', 'La'), #new column headers added
+    record_fields,
     record_class.query.all(),
     r,
+    **extra
     )
 
 

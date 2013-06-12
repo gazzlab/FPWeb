@@ -1,3 +1,5 @@
+from time import mktime
+from datetime import datetime
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from itertools import groupby
@@ -9,6 +11,11 @@ db = SQLAlchemy()
 
 
 MYSQL_CONN = 'mysql+mysqldb://%(db_user)s:%(db_pw)s@%(db_host)s/%(db_name)s'
+
+
+def get_field_names(record_class):
+  return record_class.__table__.columns._data.keys()
+  # This is apparently not in the sqlalchemy api.
 
 
 class User(db.Model):
@@ -130,10 +137,12 @@ class RecordsMediTrain(db.Model):
 
   subjectID = db.Column(db.String(50))
   date = db.Column(db.DateTime())
+  date_huh = db.Column(db.String(128))
   response = db.Column(db.Integer())
   sessionCount = db.Column(db.Integer())
   trialCount = db.Column(db.Integer())
   duration = db.Column(db.Integer())
+  timeStamp = db.Column(db.Float())
 
   def __init__(self,
     subjectID =-1.0,
@@ -145,7 +154,11 @@ class RecordsMediTrain(db.Model):
     ):
     log.debug('Creating MediTrain record, date: %r', date)
     self.subjectID = subjectID
-    self.date = date
+    try:
+      self.date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S")
+      self.timeStamp = mktime(self.date.timetuple())
+    except:
+      self.date_huh = date
     self.response = response
     self.sessionCount = sessionCount
     self.trialCount = trialCount
