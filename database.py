@@ -137,12 +137,12 @@ class RecordsMediTrain(db.Model):
 
   subjectID = db.Column(db.String(50))
   date = db.Column(db.DateTime())
-  date_huh = db.Column(db.String(128))
+#  date_huh = db.Column(db.String(128))
   response = db.Column(db.Integer())
   sessionCount = db.Column(db.Integer())
   trialCount = db.Column(db.Integer())
   duration = db.Column(db.Integer())
-  timeStamp = db.Column(db.Float())
+#  timeStamp = db.Column(db.Float())
 
   def __init__(self,
     subjectID =-1.0,
@@ -156,9 +156,10 @@ class RecordsMediTrain(db.Model):
     self.subjectID = subjectID
     try:
       self.date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S")
-      self.timeStamp = mktime(self.date.timetuple())
+#      self.timeStamp = mktime(self.date.timetuple())
     except:
-      self.date_huh = date
+#      self.date_huh = date
+      self.date = date
     self.response = response
     self.sessionCount = sessionCount
     self.trialCount = trialCount
