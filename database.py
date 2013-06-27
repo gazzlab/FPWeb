@@ -371,7 +371,7 @@ class RecordsDATPre(db.Model):
     'Have you had coffee yet today?': 'coffeeYet',
     #'Have you consumed any caffeine in the last hour?': 'coffeeYet',  # IS THIS SUPPOSED TO BE ONE OF THESE?
     #'How awake/alert are you right now, on a scale of 1-4?': 'feelingToday',  # IS THIS SUPPOSED TO BE ONE OF THESE?
-    'How are you feeling today, on a scale from 0-5?': 'feelingToday',
+    'How are you feeling today, on a scale from 0-5': 'feelingToday',
     'How long did it take you to fall asleep last night, from getting into bed to actually falling asleep?': 'sleepOnsetHours',
     'How many days a week do you drink coffee in a normal week?': 'coffeeDaysPerWeek',
     'How many hours of sleep did you get last night?': 'hoursSleep',
