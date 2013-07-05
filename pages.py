@@ -61,16 +61,16 @@ datapost = dict(
 def home_html(c, subtitle, **extra):
   c.h3(subtitle)
   with c.div(class_='container') as d:
-    d('''Welcome to the Gazzian NeuroPost Center!  
+    d('''Welcome to the Gazzian NeuroPost Center!\r\n\n  
     
-    Please begin by logging in.  If you do not have an assigned username and password,/
-    you may log in with your Google, Yahoo, AOL, Flickr, or MyOpenID account.  /
-    Simply click on the account provider (ie: Google) that you would like to use,/
-    and follow the instructions to Sign in./
+    Please begin by logging in.  If you do not have an assigned username and password,\r\n  
+    you may log in with your Google, Yahoo, AOL, Flickr, or MyOpenID account.\r\n  
+    Simply click on the account provider (ie: Google) that you would like to use,\r\n
+    and follow the instructions to Sign in.\r\n\n\n
     
-    Creating a user profile will allow us to gather your contact and background information,/
-    which we can use to let you know about Gazzian research studies in which you might be interested./
-    You can also update this later, in case your contact or background information changes.
+    Creating a user profile will allow us to gather your contact and background information,\r\n
+    which we can use to let you know about Gazzian research studies in which you might be interested.\r\n
+    You can also update this later, in case your contact or background information changes.\r\n\n\n\n\n
     
     
     FOR RESEARCHERS: Select the 'dash' module to access study data.''')
