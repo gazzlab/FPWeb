@@ -417,6 +417,7 @@ class RecordsDATPre(db.Model):
     timeStamp=-1.0,
     ):
     self.subjectID = subjectID
+    self.iPadID=iPadID
     self.whatHappened = whatHappened
     self.feelingToday=feelingToday
     self.morningWakeTime=morningWakeTime
