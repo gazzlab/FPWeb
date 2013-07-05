@@ -1,12 +1,31 @@
 import os
 import logging
-logging.basicConfig(
-  format='%(asctime)-15s - %(levelname)s - %(name)s - %(message)s',
-  filename='/tmp/neuropost.log',
-  level=logging.DEBUG,
+import logging.handlers
+
+
+LOG_FILENAME = '/var/log/neuropost/neuropost.log'
+
+
+handler = logging.handlers.RotatingFileHandler(
+  LOG_FILENAME,
+  maxBytes=10 * 1024 * 1024,
+  backupCount=25,
   )
+
+
+formatter = logging.Formatter(fmt='%(asctime)-15s - %(levelname)s - %(name)s - %(message)s')
+handler.setFormatter(formatter)
+
+
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)
+log.addHandler(handler)
+
+
 log = logging.getLogger('neuropost')
 log.info('Starting neuropost')
+
+
 from flask import Flask
 from database import db
 from login_stuff import login_manager, oid

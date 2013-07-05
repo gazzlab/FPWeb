@@ -78,6 +78,8 @@ def get_fields(record_class):
     fields = get_field_names(record_class)
   else:
     fields = fm.values()
+  if 'subjectID' not in fields:
+    fields.append('subjectID')
   return fields
 
 
