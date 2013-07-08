@@ -80,7 +80,17 @@ def get_fields(record_class):
     fields = fm.values()
   if 'subjectID' not in fields:
     fields.append('subjectID')
+  
+  #add timeStamp/date column to csv  
+  if rc.study_ID=="meditrain":
+    if 'date' not in fields:
+      fields.append('date')
+  else:
+    if 'timeStamp' not in fields:
+      fields.append('timeStamp')
+      
   return fields
+  
 
 
 def csv_write(record_class):
