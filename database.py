@@ -511,12 +511,13 @@ class RecordsLeapDat(db.Model):
   no_response = db.Column(db.Integer(4))
   hit_time = db.Column(db.varchar(50))
   reaction_time = db.Column(db.varchar(50))
+  acceleration_time = db.Column(db.varchar(50))
   timestamp=db.Column(db.Float())
   
   #fields in table 'test_coords'
   
-  x = db.Column(db.Float())
-  y = db.Column(db.Float())
+  x = db.Column(db.varchar(4000))
+  y = db.Column(db.varchar(4000))
   fk_test = db.Column(db.Integer(11)) 
 
 
