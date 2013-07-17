@@ -14,6 +14,7 @@ from database import (
   RecordsMediTrainSaliva,
   RecordsDATPre,
   RecordsDATPost,
+  RecordsLeapDat,
   RecordAny,
   get_field_names,
   )
@@ -31,6 +32,7 @@ studyID_to_record_class = {
   'meditrainpost':RecordsMediTrainPost,
   'meditrainsaliva':RecordsMediTrainSaliva,
   'meditrainsleep':RecordsMediTrainSleep,
+  'LeapDAT':RecordsLeapDAT,
   }
 
 
@@ -50,6 +52,7 @@ def dash():
     RecordsMediTrainPost,
     RecordsMediTrainSleep,
     RecordsMediTrainSaliva,
+    RecordsLeapDat
     ]
   page['ra'] = RecordAny
   return str(base(**page))
