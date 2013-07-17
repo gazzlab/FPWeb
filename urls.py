@@ -24,6 +24,7 @@ from database import (
   RecordsMediTrainSaliva,
   RecordsDATPre,
   RecordsDATPost,
+  RecordsLeapDat,
   )
 from login_stuff import login, logout
 from dash import dash, study, csv, studyID_to_record_class, profile
