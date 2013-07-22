@@ -14,6 +14,7 @@ from database import (
   RecordsMediTrainSaliva,
   RecordsDATPre,
   RecordsDATPost,
+  RecordsLeapDat,
   RecordAny,
   get_field_names,
   )
@@ -31,6 +32,7 @@ studyID_to_record_class = {
   'meditrainpost':RecordsMediTrainPost,
   'meditrainsaliva':RecordsMediTrainSaliva,
   'meditrainsleep':RecordsMediTrainSleep,
+  'LeapDAT':RecordsLeapDAT,
   }
 
 
@@ -50,6 +52,7 @@ def dash():
     RecordsMediTrainPost,
     RecordsMediTrainSleep,
     RecordsMediTrainSaliva,
+    RecordsLeapDat
     ]
   page['ra'] = RecordAny
   return str(base(**page))
@@ -80,7 +83,17 @@ def get_fields(record_class):
     fields = fm.values()
   if 'subjectID' not in fields:
     fields.append('subjectID')
+  
+  #add timeStamp/date column to csv  
+  if rc.study_ID=="meditrain":
+    if 'date' not in fields:
+      fields.append('date')
+  else:
+    if 'timeStamp' not in fields:
+      fields.append('timeStamp')
+      
   return fields
+  
 
 
 def csv_write(record_class):

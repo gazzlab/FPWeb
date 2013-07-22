@@ -452,8 +452,6 @@ class RecordsDATPost(db.Model):
     
   id = db.Column(db.Integer, primary_key=True)
 
-
-
   subjectID = db.Column(db.String(50))
   levelDATPost = db.Column(db.String(50))
   enjoyableTraining=db.Column(db.String(50))
@@ -478,6 +476,76 @@ class RecordsDATPost(db.Model):
     self.gamePosition=gamePosition
     self.iPadPosition=iPadPosition
     self.timeStamp = timeStamp
+
+
+
+class RecordsLeapDat(db.Model):
+
+  study_ID = 'LeapDAT'
+
+  __tablename__ = 'rec9'
+
+  id = db.Column(db.Integer, primary_key=True)
+  
+  #two tables, one for 'players', one for 'test' data
+  #fields in table 'players'
+  # SET time_zone = "+00:00";
+  subjectID = db.Column(db.VARCHAR(50))
+  date_of_birth = db.Column(db.DateTime)
+  
+  #fields in table 'test'
+  trial_number = db.Column(db.varchar(50))
+  time = db.Column(db.varchar(50))
+  angle = db.Column(db.varchar(50))
+  cue = db.Column(db.varchar(50))
+  direction = db.Column(db.Integer(4))
+  valid = db.Column(db.Integer(4))
+  success = db.Column(db.Integer(4))
+  no_response = db.Column(db.Integer(4))
+  acceleration_time = db.Column(db.varchar(50))
+  reaction_time = db.Column(db.varchar(50))
+  hit_time = db.Column(db.varchar(50))
+  timestamp=db.Column(db.Float())
+  
+  #fields in table 'test_coords'
+  x = db.Column(db.varchar(4000))
+  y = db.Column(db.varchar(4000))
+
+  def __init__(self,  
+    id =-1.0,
+    player_id=-1.0,
+    date_of_birth =-1.0,
+    trial_number=-1.0,
+    time=-1.0,
+    angle=-1.0,
+    cue=-1.0,
+    direction=-1.0,
+    valid=-1.0,
+    success=-1.0,
+    no_response=-1.0,
+    acceleration_time=-1,0,
+    reaction_time=-1.0,
+    hit_time=-1.0,
+    timestamp=-1.0,
+    ):
+    
+    log.debug('Creating LeapDAT record')
+    self.player_id = player_id
+    self.date_of_birth = date_of_birth
+    self.trial_number = trial_number
+    self.time = time
+    self.angle = angle
+    self.cue = cue
+    self.direction = direction
+    self.valid = valid
+    self.success = success
+    self.no_response = no_response
+    self.acceleration_time = acceleration_time
+    self.reaction_time = reaction_time
+    self.hit_time = hit_time
+    self.timestamp=timestamp
+
+
 
 
 
