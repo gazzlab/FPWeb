@@ -75,6 +75,7 @@ def study(studyID):
 
 
 def get_fields(record_class):
+  rc = studyID_to_record_class.get(studyID.lower())
   try:
     fm = record_class.field_map
   except AttributeError:
