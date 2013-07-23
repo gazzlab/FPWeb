@@ -523,7 +523,7 @@ class RecordsLeapDat(db.Model):
     valid=-1.0,
     success=-1.0,
     no_response=-1.0,
-    acceleration_time=-1,0,
+    acceleration_time=-1.0,
     reaction_time=-1.0,
     hit_time=-1.0,
     timestamp=-1.0,
