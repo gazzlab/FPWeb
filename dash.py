@@ -85,7 +85,7 @@ def get_fields(record_class):
     fields.append('subjectID')
   
   #add timeStamp/date column to csv  
-  if record_class.study_ID=="meditrain":
+  if fields.study_ID=="meditrain":
     if 'date' not in fields:
       fields.append('date')
   else:
