@@ -32,7 +32,7 @@ studyID_to_record_class = {
   'meditrainpost':RecordsMediTrainPost,
   'meditrainsaliva':RecordsMediTrainSaliva,
   'meditrainsleep':RecordsMediTrainSleep,
-  'LeapDAT':RecordsLeapDAT,
+  'LeapDAT':RecordsLeapDat,
   }
 
 
