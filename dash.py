@@ -75,7 +75,6 @@ def study(studyID):
 
 
 def get_fields(record_class):
-  rc = studyID_to_record_class.get(studyID.lower())
   try:
     fm = record_class.field_map
   except AttributeError:
@@ -86,7 +85,7 @@ def get_fields(record_class):
     fields.append('subjectID')
   
   #add timeStamp/date column to csv  
-  if rc.study_ID=="meditrain":
+  if record_class.study_ID=="meditrain":
     if 'date' not in fields:
       fields.append('date')
   else:
