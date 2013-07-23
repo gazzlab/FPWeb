@@ -527,6 +527,8 @@ class RecordsLeapDat(db.Model):
     reaction_time=-1.0,
     hit_time=-1.0,
     timestamp=-1.0,
+    x=-1.0,
+    y=-1.0,
     ):
     
     log.debug('Creating LeapDAT record')
@@ -544,6 +546,8 @@ class RecordsLeapDat(db.Model):
     self.reaction_time = reaction_time
     self.hit_time = hit_time
     self.timestamp=timestamp
+    self.x=x
+    self.y=y
 
 
 
