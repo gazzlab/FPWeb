@@ -490,26 +490,26 @@ class RecordsLeapDat(db.Model):
   #two tables, one for 'players', one for 'test' data
   #fields in table 'players'
   # SET time_zone = "+00:00";
-  subjectID = db.Column(db.VARCHAR(50))
+  subjectID = db.Column(db.String(50))
   date_of_birth = db.Column(db.DateTime)
   
   #fields in table 'test'
-  trial_number = db.Column(db.varchar(50))
-  time = db.Column(db.varchar(50))
-  angle = db.Column(db.varchar(50))
-  cue = db.Column(db.varchar(50))
+  trial_number = db.Column(db.String(50))
+  time = db.Column(db.String(50))
+  angle = db.Column(db.String(50))
+  cue = db.Column(db.String(50))
   direction = db.Column(db.Integer(4))
   valid = db.Column(db.Integer(4))
   success = db.Column(db.Integer(4))
   no_response = db.Column(db.Integer(4))
-  acceleration_time = db.Column(db.varchar(50))
-  reaction_time = db.Column(db.varchar(50))
-  hit_time = db.Column(db.varchar(50))
+  acceleration_time = db.Column(db.String(50))
+  reaction_time = db.Column(db.String(50))
+  hit_time = db.Column(db.String(50))
   timestamp=db.Column(db.Float())
   
   #fields in table 'test_coords'
-  x = db.Column(db.varchar(4000))
-  y = db.Column(db.varchar(4000))
+  x = db.Column(db.String(4000))
+  y = db.Column(db.String(4000))
 
   def __init__(self,  
     id =-1.0,
