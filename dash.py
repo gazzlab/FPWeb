@@ -103,8 +103,22 @@ def csv_write(record_class):
   fields = get_fields(record_class)
   fields.sort()
   ww(fields)
-  for record in record_class.query.all():
-    ww([getattr(record, field) for field in fields])
+  #for record in record_class.query.all():
+  if 'date' in fields:
+    for record in record_class.query.all():
+      row_data = []
+      for field in fields:
+        it = getattr(record, field)
+        if field == 'date' and it is not None:
+          it = it.isoformat()
+        row_data.append(it)
+      ww(row_data)
+  else:
+    for record in record_class.query.all():
+      row_data = [getattr(record, fields) for field in fields]
+      ww(row_data)
+    
+    #ww([getattr(record, field) for field in fields])
   return f.getvalue()
 
 
