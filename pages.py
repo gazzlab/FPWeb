@@ -170,9 +170,9 @@ main_page = dict(
 def study(c, user, db, record_class, record_fields, **extra):
   studyID = record_class.study_ID
 
-  def r(row, record, record_fields, **extra):
+  def r(row, row_data, **extra):
     for field in record_fields:
-      row.td(str(getattr(record, field, '--')))
+      row.td(str(getattr(row_data, field, '--')))
 
   do_table(
     c.div,
