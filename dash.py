@@ -115,7 +115,7 @@ def csv_write(record_class):
       ww(row_data)
   else:
     for record in record_class.query.all():
-      row_data = [getattr(record, fields) for field in fields]
+      row_data = [getattr(record, field) for field in fields]
       ww(row_data)
     
     #ww([getattr(record, field) for field in fields])
