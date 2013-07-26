@@ -61,8 +61,20 @@ datapost = dict(
 def home_html(c, subtitle, **extra):
   c.h3(subtitle)
   with c.div(class_='container') as d:
-    d('Some content!')
-
+    d('''Welcome to the Gazzian NeuroPost Center!  
+    
+    Please begin by logging in.  If you do not have an assigned username and password,/
+    you may log in with your Google, Yahoo, AOL, Flickr, or MyOpenID account.  /
+    Simply click on the account provider (ie: Google) that you would like to use,/
+    and follow the instructions to Sign in./
+    
+    Creating a user profile will allow us to gather your contact and background information,/
+    which we can use to let you know about Gazzian research studies in which you might be interested./
+    You can also update this later, in case your contact or background information changes.
+    
+    
+    FOR RESEARCHERS: Select the 'dash' module to access study data.''')
+    
 
 home_page = dict(
   title = 'Gazzian',
@@ -157,13 +169,16 @@ def study(c, user, db, record_class, **extra):
   studyID = record_class.study_ID
 
   def r(row, record, **extra):
-    t = datetime.utcfromtimestamp(record.timeStamp)
+    #t = datetime.utcfromtimestamp(record.timeStamp)
+    t = datetime.fromtimestamp(record.timeStamp) #replaces UTC with local time    
     row.td(t.isoformat(' '))
 
   do_table(
     c.div,
     "Records",
-    ('Timestamp', 'Faa', 'Laa', 'La'),
+    #Headers should be defined by record_class (ie: studyID-specific)
+    #Would like to have Headers here for *all* fields in that rec
+    ('Timestamp', 'SubjectID', 'Laa', 'La'), #new column headers added
     record_class.query.all(),
     r,
     )

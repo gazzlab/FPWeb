@@ -215,6 +215,7 @@ class RecordsMediTrainPre(db.Model):
     'Have you consumed any caffeine in the last hour?': 'caffeineHour',
     'How awake/alert are you right now, on a scale of 1-4?': 'alertness',
     'How noisy is your environment right now?': 'environmentalNoise',
+    'What level did you reach in the training app, today?': 'alertness',  # IS THIS SUPPOSED TO BE ONE OF THESE?
     }
 
   id = db.Column(db.Integer, primary_key=True)
@@ -235,7 +236,7 @@ class RecordsMediTrainPre(db.Model):
     self.subjectID = subjectID
     self.environmentalNoise = environmentalNoise
     self.alertness = alertness
-    self.caffeineHour = caffieneHour
+    self.caffeineHour = caffeineHour
     self.timeStamp = timeStamp
 
 
@@ -334,9 +335,9 @@ class RecordsMediTrainSaliva(db.Model):
   timeStamp = db.Column(db.Float())
 
   def __init__(self,
-    subjectID=-1.0,
-    salivaSample=-1.0,
-    timeStamp=-1.0,
+    subjectID,
+    salivaSample,
+    timeStamp,
     ):
     self.subjectID = subjectID
     self.salivaSample = salivaSample
@@ -354,11 +355,14 @@ class RecordsDATPre(db.Model):
     'iPad #:':'iPadID',
     'Did anything good or bad happen today yet?': 'whatHappened',
     'Have you had coffee yet today?': 'coffeeYet',
+    #'Have you consumed any caffeine in the last hour?': 'coffeeYet',  # IS THIS SUPPOSED TO BE ONE OF THESE?
+    #'How awake/alert are you right now, on a scale of 1-4?': 'feelingToday',  # IS THIS SUPPOSED TO BE ONE OF THESE?
     'How are you feeling today, on a scale from 0-5?': 'feelingToday',
     'How long did it take you to fall asleep last night, from getting into bed to actually falling asleep?': 'sleepOnsetHours',
     'How many days a week do you drink coffee in a normal week?': 'coffeeDaysPerWeek',
     'How many hours of sleep did you get last night?': 'hoursSleep',
-    'On a scale from 1-10, how "hyper" or "energetic" are you feeling today so far?': 'energetic',
+    #'On a scale from 1-10, how "hyper" or "energetic" are you feeling today so far?': 'energetic',
+    'On a scale from 1-10, how hyper or energetic are you feeling today so far?': 'energetic',
     'What time did you wake up this morning?': 'morningWakeTime',
     }
 
@@ -417,11 +421,11 @@ class RecordsDATPost(db.Model):
   __tablename__ = 'rec8'
 
   field_map = {
-    'What level did you get to?'=levelDATPost,
-    'How enjoyable was this training session, on a scale of 1-5?'=enjoyableTraining,
-    'How distracted were you during this training session, on a scale of 1-5?'=distractedTraining,
-    'In what position were you playing the game?'=gamePosition,
-    'Was the iPad:'=iPadPosition,
+    'What level did you get to?':'levelDATPost',
+    'How enjoyable was this training session, on a scale of 1-5?':'enjoyableTraining',
+    'How distracted were you during this training session, on a scale of 1-5?':'distractedTraining',
+    'In what position were you playing the game?':'gamePosition',
+    'Was the iPad:':'iPadPosition',
     }
   
 ###commented questions below were from DATpre, not DATpost
