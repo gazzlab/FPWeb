@@ -165,6 +165,41 @@ class RecordsMediTrain(db.Model):
     self.trialCount = trialCount
     self.duration = duration
 
+class RecordsMediTrainV2(db.Model):
+    
+    study_ID = 'testMeditrain'
+    
+    __tablename__ = 'meditrainTest'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    
+    subjectID = db.Column(db.String(50))
+    cumulativeId = db.Column(db.Integer())
+    day = db.Column(db.Integer())
+    duration = db.Column(db.Float())
+    endTimestamp = db.Column(db.Integer())
+    month = db.Column(db.Integer())
+    startTimestamp = db.Column(db.Integer())
+    year = db.Column(db.Integer())
+    
+    def __init__(self,
+                 subjectID =-1.0,
+                 day=-1.0,
+                 endTimestamp=-1.0,
+                 month=-1.0,
+                 startTimestamp=-1.0,
+                 duration=-1.0,
+                 year=-1.0):
+        log.debug('Creating MediTrain record, date: %r', date)
+        self.subjectID = subjectID
+        self.cumulativeId = cumulativeId
+        self.day = day
+        self.duration = duration
+        self.endTimestamp = endTimestamp
+        self.month = month
+        self.startTimestamp = startTimestamp
+        self.year = year
+
 
 # Trial,Session Id,Category Id,Block Id,Trial,Exemplars,Morph Level,Morph Stimulus,RT,Response,Accuracy
 
