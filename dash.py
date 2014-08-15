@@ -47,6 +47,7 @@ def dash():
   page['record_classes'] = [
     RecordsDat,
     RecordsMediTrain,
+    RecordsMediTrainV2,
     RecordsTrainCat,
     RecordsDATPre,
     RecordsDATPost,
@@ -54,8 +55,7 @@ def dash():
     RecordsMediTrainPost,
     RecordsMediTrainSleep,
     RecordsMediTrainSaliva,
-    RecordsLeapDat,
-    RecordsMediTrainV2
+    RecordsLeapDat
     ]
   page['ra'] = RecordAny
   return str(base(**page))
