@@ -171,7 +171,7 @@ class RecordsMediTrainV2Session(db.Model):
     
     __tablename__ = 'meditrainTest'
     
-    id = db.Column(db.Intger(), primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
 
     sessionID = db.Column(db.String(55))
     subjectID = db.Column(db.Integer, db.ForeignKey('subject.id'))
