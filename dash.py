@@ -7,7 +7,10 @@ from database import (
   db,
   RecordsDat,
   RecordsMediTrain,
-  RecordsMediTrainV2,
+  RecordsMediTrainV2Session,
+  RecordsMediTrainV2Subject,
+  RecordsMediTrainV2Survey,
+  RecordsMediTrainV2MiniSession,
   RecordsTrainCat,
   RecordsMediTrainPre,
   RecordsMediTrainPost,
@@ -34,7 +37,7 @@ studyID_to_record_class = {
   'meditrainsaliva':RecordsMediTrainSaliva,
   'meditrainsleep':RecordsMediTrainSleep,
   'LeapDAT':RecordsLeapDat,
-  'testMeditrain': RecordsMediTrainV2
+  'testmeditrain': RecordsMediTrainV2Session
   }
 
 
@@ -47,7 +50,10 @@ def dash():
   page['record_classes'] = [
     RecordsDat,
     RecordsMediTrain,
-    RecordsMediTrainV2,
+    RecordsMediTrainV2Session,
+    RecordsMediTrainV2Subject,
+    RecordsMediTrainV2Survey,
+    RecordsMediTrainV2MiniSession,
     RecordsTrainCat,
     RecordsDATPre,
     RecordsDATPost,

@@ -1,0 +1,78 @@
+{
+	"studyID": "testMeditrain",
+	"subjectID": "testSubject",
+	"sessionCount": "3",
+	"data": [
+		{
+			"startTimestamp:": 1408319828,
+			"cumulativeID:": 2,
+			"surveyID:": "testSubject-2",
+			"endTimestamp:": 2,
+			"day:": 2,
+			"month:": 2,
+			"year:": 2,
+			"sessionID:": 2,
+			"subjectID:": 2,
+			"miniSessionCount:": 1,
+			"miniSessions:": [{
+				"cumulativeID": 2,
+				"miniSessionID": "testSubject-2",
+				"duration": 22,
+				"endTime": 1408319853,
+				"result": 1,
+				"startTime": 1408319828,
+				"response:": 1
+			}]
+		},
+		{
+			"startTimestamp:": 0,
+			"cumulativeID:": 1,
+			"surveyID:": "testSubject-1",
+			"endTimestamp:": 1,
+			"day:": 1,
+			"month:": 1,
+			"year:": 1,
+			"sessionID:": 1,
+			"subjectID:": 1,
+			"miniSessionCount:": 1,
+			"miniSessions:": [{
+				"cumulativeID": 1,
+				"miniSessionID": "testSubject-1",
+				"duration": 20,
+				"endTime": 1408319827,
+				"result": 1,
+				"startTime": 1408319772,
+				"response:": 1
+			}],
+			"survey:": {
+				"cumulativeID": 2,
+				"surveyID": "testSubject-2",
+				"question1": 1,
+				"question2": 3,
+				"question3": 3,
+				"timestamp": 1408319771
+			}
+		},
+		{
+			"startTimestamp:": 1408319880,
+			"cumulativeID:": 3,
+			"surveyID:": "testSubject-3",
+			"endTimestamp:": 3,
+			"day:": 3,
+			"month:": 3,
+			"year:": 3,
+			"sessionID:": 3,
+			"subjectID:": 3,
+			"miniSessionCount:": 1,
+			"miniSessions:": [{
+				"cumulativeID": 3,
+				"miniSessionID": "testSubject-3",
+				"duration": 24.2,
+				"endTime": 1408319909,
+				"result": 0,
+				"startTime": 1408319880,
+				"response:": 0
+			}]
+		}
+	]
+} 
