@@ -165,8 +165,84 @@ class RecordsMediTrain(db.Model):
     self.trialCount = trialCount
     self.duration = duration
 
+
+class RecordsMediTrainV2Survey(db.Model):
+    study_ID = 'testMeditrain'
+
+    __tablename__ = 'meditrainTestSurvey'
+
+    id = db.Column(db.Integer(), primary_key=True)
+
+    surveyID = db.Column(db.String(55))
+    complete = db.Column(db.Boolean())
+    cumulativeID = db.Column(db.Integer())
+    question1 = db.Column(db.Boolean())
+    question2 = db.Column(db.Integer())
+    question3 = db.Column(db.Integer())
+    timestamp = db.Column(db.Integer())
+    session_id = db.Column(db.Integer(), db.ForeignKey("session.id"))
+    subjectID = db.Column(db.String(50))
+    sessionID = db.Column(db.String(55))
+
+    def __init__(self,
+                 surveyID = None,
+                 complete = False,
+                 cumulativeID = -1.0,
+                 question1 = None,
+                 question2 = -1.0,
+                 question3 = -1.0,
+                 timestamp = -1.0,
+                 subjectID = None,
+                 sessionID = None):
+        log.debug('Creating MediTrain V2 Survey record, surveyID: %r', surveyID)
+        self.surveyID = surveyID
+        self.complete = complete
+        self.cumulativeID = cumulativeID
+        self.question1 = question1
+        self.question2 = question2
+        self.question3 = question3
+        self.timestamp = timestamp
+        self.subjectID = subjectID
+        self.sessionID = sessionID
+
+class RecordsMediTrainV2MiniSession(db.Model):
+    study_ID = 'testMeditrain'
+
+    __tablename__ = 'meditrainTestMiniSession'
+
+    id = db.Column(db.Integer(), primary_key=True)
+
+    miniSessionID = db.Column(db.String(55))
+    cumulativeID = db.Column(db.Integer())
+    duration = db.Column(db.Float())
+    endTime = db.Column(db.Integer())
+    result = db.Column(db.Integer())
+    startTime = db.Column(db.Integer())
+    session_id = db.Column(db.Integer(), db.ForeignKey("session.id"))
+    sessionID = db.Column(db.String(55))
+    subjectID = db.Column(db.String(50))
+
+    def __init__(self,
+                 miniSessionID = None,
+                 cumulativeID = -1.0,
+                 duration = -1.0,
+                 endTime = -1.0,
+                 result = -1.0,
+                 startTime = -1.0,
+                 sessionID = None,
+                 subjectID = None):
+        log.debug('Creating MediTrain V2 MiniSession record, miniSessionID: %r', miniSessionID)
+        self.miniSessionID = miniSessionID
+        self.cumulativeID = cumulativeID
+        self.duration = duration
+        self.endTime = endTime
+        self.result = result
+        self.startTime = startTime
+        self.sessionID = sessionID
+        self.subjectID = subjectID
+
 class RecordsMediTrainV2Session(db.Model):
-    
+
     study_ID = 'testMeditrain'
     
     __tablename__ = 'meditrainTest'
@@ -245,80 +321,6 @@ class RecordsMediTrainV2Session(db.Model):
 #        self.meditationDuration = meditationDuration
 #        self.startTimestamp = startTimestamp
 
-class RecordsMediTrainV2Survey(db.Model):
-    study_ID = 'testMeditrain'
-
-    __tablename__ = 'meditrainTestSurvey'
-
-    id = db.Column(db.Integer(), primary_key=True)
-
-    surveyID = db.Column(db.String(55))
-    complete = db.Column(db.Boolean())
-    cumulativeID = db.Column(db.Integer())
-    question1 = db.Column(db.Boolean())
-    question2 = db.Column(db.Integer())
-    question3 = db.Column(db.Integer())
-    timestamp = db.Column(db.Integer())
-    session_id = db.Column(db.Integer(), db.ForeignKey("session.id"))
-    subjectID = db.Column(db.String(50))
-    sessionID = db.Column(db.String(55))
-
-    def __init__(self,
-                 surveyID = None,
-                 complete = False,
-                 cumulativeID = -1.0,
-                 question1 = None,
-                 question2 = -1.0,
-                 question3 = -1.0,
-                 timestamp = -1.0,
-                 subjectID = None,
-                 sessionID = None):
-        log.debug('Creating MediTrain V2 Survey record, surveyID: %r', surveyID)
-        self.surveyID = surveyID
-        self.complete = complete
-        self.cumulativeID = cumulativeID
-        self.question1 = question1
-        self.question2 = question2
-        self.question3 = question3
-        self.timestamp = timestamp
-        self.subjectID = subjectID
-        self.sessionID = sessionID
-
-class RecordsMediTrainV2MiniSession(db.Model):
-    study_ID = 'testMeditrain'
-
-    __tablename__ = 'meditrainTestMiniSession'
-
-    id = db.Column(db.Integer(), primary_key=True)
-
-    miniSessionID = db.Column(db.String(55))
-    cumulativeID = db.Column(db.Integer())
-    duration = db.Column(db.Float())
-    endTime = db.Column(db.Integer())
-    result = db.Column(db.Integer())
-    startTime = db.Column(db.Integer())
-    session_id = db.Column(db.Integer(), db.ForeignKey("session.id"))
-    sessionID = db.Column(db.String(55))
-    subjectID = db.Column(db.String(50))
-
-    def __init__(self,
-                 miniSessionID = None,
-                 cumulativeID = -1.0,
-                 duration = -1.0,
-                 endTime = -1.0,
-                 result = -1.0,
-                 startTime = -1.0,
-                 sessionID = None,
-                 subjectID = None):
-        log.debug('Creating MediTrain V2 MiniSession record, miniSessionID: %r', miniSessionID)
-        self.miniSessionID = miniSessionID
-        self.cumulativeID = cumulativeID
-        self.duration = duration
-        self.endTime = endTime
-        self.result = result
-        self.startTime = startTime
-        self.sessionID = sessionID
-        self.subjectID = subjectID
 
 
 # Trial,Session Id,Category Id,Block Id,Trial,Exemplars,Morph Level,Morph Stimulus,RT,Response,Accuracy
