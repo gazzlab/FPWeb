@@ -318,6 +318,7 @@ class RecordsMediTrainV2MiniSession(db.Model):
         self.result = result
         self.startTime = startTime
         self.sessionID = sessionID
+        self.subjectID = subjectID
 
 
 # Trial,Session Id,Category Id,Block Id,Trial,Exemplars,Morph Level,Morph Stimulus,RT,Response,Accuracy
