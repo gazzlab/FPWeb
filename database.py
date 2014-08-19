@@ -176,8 +176,8 @@ class RecordsMediTrainV2Session(db.Model):
     sessionID = db.Column(db.String(55))
     subjectID = db.Column(db.String(50))
     #subject = db.relationship("RecordsMediTrainV2Subject", backref="sessions")
-    miniSessions = db.relationship("RecordsMediTrainV2MiniSession", backref="session")
-    survey = db.relationship("RecordsMediTrainV2Survey", uselist=False, backref="session")
+    miniSessions = db.relationship("RecordsMediTrainV2MiniSession", backref=__tablename__)
+    survey = db.relationship("RecordsMediTrainV2Survey", uselist=False, backref=__tablename__)
     miniSessionCount = db.Column(db.Integer())
     cumulativeID = db.Column(db.Integer())
     day = db.Column(db.Integer())
@@ -258,7 +258,7 @@ class RecordsMediTrainV2Survey(db.Model):
     question2 = db.Column(db.Integer())
     question3 = db.Column(db.Integer())
     timestamp = db.Column(db.Integer())
-    session_id = db.Column(db.Integer(), db.ForeignKey('meditrainTest.id'))
+    session_id = db.Column(db.Integer(), db.ForeignKey(RecordsMediTrainV2Session.__tablename__ + ".id"))
     subjectID = db.Column(db.String(50))
     sessionID = db.Column(db.String(55))
 
@@ -296,7 +296,7 @@ class RecordsMediTrainV2MiniSession(db.Model):
     endTime = db.Column(db.Integer())
     result = db.Column(db.Integer())
     startTime = db.Column(db.Integer())
-    session_id = db.Column(db.Integer(), db.ForeignKey('meditrainTest.id'))
+    session_id = db.Column(db.Integer(), db.ForeignKey(RecordsMediTrainV2Session.__tablename__ + ".id"))
     sessionID = db.Column(db.String(55))
     subjectID = db.Column(db.String(50))
 
