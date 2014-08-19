@@ -178,6 +178,7 @@ class RecordsMediTrainV2Session(db.Model):
     subject = db.relationship("RecordsMediTrainV2Subject", backref="sessions")
     miniSessions = db.relationship("RecordsMediTrainV2MiniSession", backref="session")
     survey = db.relationship("RecordsMediTrainV2Survey", uselist=False, backref="session")
+    miniSessionCount = db.Column(db.Integer())
     cumulativeID = db.Column(db.Integer())
     day = db.Column(db.Integer())
     duration = db.Column(db.Float())
@@ -187,12 +188,13 @@ class RecordsMediTrainV2Session(db.Model):
     year = db.Column(db.Integer())
     
     def __init__(self,
-                 sessionID = None,
-                 subjectID = None,
+                 sessionID=None,
+                 subjectID=None,
                  cumulativeID=-1.0,
                  day=-1.0,
                  endTimestamp=-1.0,
                  miniSessions=None,
+                 miniSessionCount=-1.0,
                  survey=None,
                  month=-1.0,
                  startTimestamp=-1.0,
@@ -208,6 +210,7 @@ class RecordsMediTrainV2Session(db.Model):
         self.month = month
         self.startTimestamp = startTimestamp
         self.year = year
+        self.miniSessionCount = miniSessionCount
         for i,miniSession in miniSessions:
             self.miniSessions[i] = RecordsMediTrainV2MiniSession(miniSessions[i])
         self.survey = RecordsMediTrainV2Survey(survey)
