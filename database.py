@@ -176,8 +176,8 @@ class RecordsMediTrainV2Session(db.Model):
     sessionID = db.Column(db.String(55))
     subjectID = db.Column(db.String(50))
 #    subject = db.relationship("RecordsMediTrainV2Subject", backref="sessions")
-#    miniSessions = db.relationship("RecordsMediTrainV2MiniSession", backref=__tablename__)
-#    survey = db.relationship("RecordsMediTrainV2Survey", uselist=False, backref=__tablename__)
+    miniSessions = db.relationship(RecordsMediTrainV2MiniSession.__tablename__, backref="session")
+    survey = db.relationship(RecordsMediTrainV2Survey.__tablename__, uselist=False, backref="session")
     miniSessionCount = db.Column(db.Integer())
     cumulativeID = db.Column(db.Integer())
     day = db.Column(db.Integer())
@@ -211,9 +211,9 @@ class RecordsMediTrainV2Session(db.Model):
         self.startTimestamp = startTimestamp
         self.year = year
         self.miniSessionCount = miniSessionCount
-#        for miniSession in miniSessions:
-#            self.miniSessions.append(RecordsMediTrainV2MiniSession(miniSession))
-#        self.survey = RecordsMediTrainV2Survey(survey)
+        for miniSession in miniSessions:
+            self.miniSessions.append(RecordsMediTrainV2MiniSession(miniSession))
+        self.survey = RecordsMediTrainV2Survey(survey)
 
 #class RecordsMediTrainV2Subject(db.Model):
 #    study_ID = 'testMeditrain'
