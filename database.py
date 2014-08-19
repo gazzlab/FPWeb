@@ -211,9 +211,9 @@ class RecordsMediTrainV2Session(db.Model):
         self.startTimestamp = startTimestamp
         self.year = year
         self.miniSessionCount = miniSessionCount
-        for i,miniSession in miniSessions:
-            self.miniSessions[i] = RecordsMediTrainV2MiniSession(miniSessions[i])
-        self.survey = RecordsMediTrainV2Survey(survey)
+#        for miniSession in miniSessions:
+#            self.miniSessions.append(RecordsMediTrainV2MiniSession(miniSession))
+#        self.survey = RecordsMediTrainV2Survey(survey)
 
 #class RecordsMediTrainV2Subject(db.Model):
 #    study_ID = 'testMeditrain'
