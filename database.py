@@ -207,7 +207,7 @@ class RecordsMediTrainV2Session(db.Model):
         self.day = day
         self.duration = duration
         self.endTimestamp = endTimestamp
-        self.month = month                                                                               sMediTrainV2Subject
+        self.month = month
         self.startTimestamp = startTimestamp
         self.year = year
         self.miniSessionCount = miniSessionCount
