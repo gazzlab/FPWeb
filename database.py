@@ -215,34 +215,34 @@ class RecordsMediTrainV2Session(db.Model):
             self.miniSessions[i] = RecordsMediTrainV2MiniSession(miniSessions[i])
         self.survey = RecordsMediTrainV2Survey(survey)
 
-class RecordsMediTrainV2Subject(db.Model):
-    study_ID = 'testMeditrain'
-
-    __tablename__ = 'meditrainTestSubject'
-
-    id = db.Column(db.Integer(), primary_key=True)
-
-    subjectID = db.Column(db.String(50))
-    daysCompleted = db.Column(db.Integer())
-    endTimestamp = db.Column(db.Integer())
-    lastSyncTime = db.Column(db.Integer())
-    meditationDuration = db.Column(db.Float())
-    startTimestamp = db.Column(db.Integer())
-
-    def __init__(self,
-                 subjectID =-1.0,
-                 daysCompleted = -1.0,
-	             endTimestamp = -1.0,
-                 lastSyncTime = -1.0,
-                 meditationDuration = -1.0,
-                 startTimestamp = -1.0):
-        log.debug('Creating MediTrain V2 Subject record, subjectID: %r', subjectID)
-        self.subjectID = subjectID
-        self.daysCompleted = daysCompleted
-        self.endTimestamp = endTimestamp
-        self.lastSyncTime = lastSyncTime
-        self.meditationDuration = meditationDuration
-        self.startTimestamp = startTimestamp
+#class RecordsMediTrainV2Subject(db.Model):
+#    study_ID = 'testMeditrain'
+#
+#    __tablename__ = 'meditrainTestSubject'
+#
+#    id = db.Column(db.Integer(), primary_key=True)
+#
+#    subjectID = db.Column(db.String(50))
+#    daysCompleted = db.Column(db.Integer())
+#    endTimestamp = db.Column(db.Integer())
+#    lastSyncTime = db.Column(db.Integer())
+#    meditationDuration = db.Column(db.Float())
+#    startTimestamp = db.Column(db.Integer())
+#
+#    def __init__(self,
+#                 subjectID =-1.0,
+#                 daysCompleted = -1.0,
+#	             endTimestamp = -1.0,
+#                 lastSyncTime = -1.0,
+#                 meditationDuration = -1.0,
+#                 startTimestamp = -1.0):
+#        log.debug('Creating MediTrain V2 Subject record, subjectID: %r', subjectID)
+#        self.subjectID = subjectID
+#        self.daysCompleted = daysCompleted
+#        self.endTimestamp = endTimestamp
+#        self.lastSyncTime = lastSyncTime
+#        self.meditationDuration = meditationDuration
+#        self.startTimestamp = startTimestamp
 
 class RecordsMediTrainV2Survey(db.Model):
     study_ID = 'testMeditrain'
