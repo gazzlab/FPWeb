@@ -174,10 +174,10 @@ class RecordsMediTrainV2Session(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
 
     sessionID = db.Column(db.String(55))
-    subjectID = db.Column(db.Integer, db.ForeignKey('subject.id'))
+    subjectID = db.Column(db.String(50))
     subject = db.relationship("RecordsMediTrainV2Subject", backref="sessions")
     miniSessions = db.relationship("RecordsMediTrainV2MiniSession", backref="session")
-    survey= db.relationship("RecordsMediTrainV2Survey", uselist=False, backref="session")
+    survey = db.relationship("RecordsMediTrainV2Survey", uselist=False, backref="session")
     cumulativeID = db.Column(db.Integer())
     day = db.Column(db.Integer())
     duration = db.Column(db.Float())
@@ -191,6 +191,8 @@ class RecordsMediTrainV2Session(db.Model):
                  cumulativeID=-1.0,
                  day=-1.0,
                  endTimestamp=-1.0,
+                 miniSessions=None,
+                 survey=None,
                  month=-1.0,
                  startTimestamp=-1.0,
                  duration=-1.0,
@@ -204,6 +206,9 @@ class RecordsMediTrainV2Session(db.Model):
         self.month = month
         self.startTimestamp = startTimestamp
         self.year = year
+        for i,miniSession in miniSessions:
+            self.miniSessions[i] = RecordsMediTrainV2MiniSession(miniSessions[i])
+        self.survey = RecordsMediTrainV2Survey(survey)
 
 class RecordsMediTrainV2Subject(db.Model):
     study_ID = 'testMeditrain'
@@ -249,8 +254,10 @@ class RecordsMediTrainV2Survey(db.Model):
     question2 = db.Column(db.Integer())
     question3 = db.Column(db.Integer())
     timestamp = db.Column(db.Integer())
-    subjectID = db.Column(db.String(50), db.ForeignKey('subject.id'))
-    sessionID = db.Column(db.String(55), db.ForeignKey('session.id'))
+    subject_id = db.Column(db.Integer(), db.ForeignKey('subject.id'))
+    session_id = db.Column(db.Integer(), db.ForeignKey('session.id'))
+    subjectID = db.Column(db.String(50))
+    sessionID = db.Column(db.String(55))
 
     def __init__(self,
                  surveyID = None,
@@ -259,7 +266,9 @@ class RecordsMediTrainV2Survey(db.Model):
                  question1 = None,
                  question2 = -1.0,
                  question3 = -1.0,
-                 timestamp = -1.0):
+                 timestamp = -1.0,
+                 subjectID = None,
+                 sessionID = None):
         log.debug('Creating MediTrain V2 Survey record, surveyID: %r', surveyID)
         self.surveyID = surveyID
         self.complete = complete
@@ -268,6 +277,8 @@ class RecordsMediTrainV2Survey(db.Model):
         self.question2 = question2
         self.question3 = question3
         self.timestamp = timestamp
+        self.subjectID = subjectID
+        self.sessionID = sessionID
 
 class RecordsMediTrainV2MiniSession(db.Model):
     study_ID = 'testMeditrain'
@@ -282,7 +293,9 @@ class RecordsMediTrainV2MiniSession(db.Model):
     endTime = db.Column(db.Integer())
     result = db.Column(db.Integer())
     startTime = db.Column(db.Integer())
-    sessionID = db.Column(db.String(55), db.ForeignKey('session.id'))
+    session_id = db.Column(db.Integer(), db.ForeignKey('session.id'))
+    sessionID = db.Column(db.String(55))
+    subjectID = db.Column(db.String(50))
 
     def __init__(self,
                  miniSessionID = None,
@@ -290,7 +303,9 @@ class RecordsMediTrainV2MiniSession(db.Model):
                  duration = -1.0,
                  endTime = -1.0,
                  result = -1.0,
-                 startTime = -1.0):
+                 startTime = -1.0,
+                 sessionID = None,
+                 subjectID = None):
         log.debug('Creating MediTrain V2 MiniSession record, miniSessionID: %r', miniSessionID)
         self.miniSessionID = miniSessionID
         self.cumulativeID = cumulativeID
@@ -298,6 +313,7 @@ class RecordsMediTrainV2MiniSession(db.Model):
         self.endTime = endTime
         self.result = result
         self.startTime = startTime
+        self.sessionID = sessionID
 
 
 # Trial,Session Id,Category Id,Block Id,Trial,Exemplars,Morph Level,Morph Stimulus,RT,Response,Accuracy
