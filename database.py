@@ -258,7 +258,7 @@ class RecordsMediTrainV2Survey(db.Model):
     question2 = db.Column(db.Integer())
     question3 = db.Column(db.Integer())
     timestamp = db.Column(db.Integer())
-#    session_id = db.Column(db.Integer(), db.ForeignKey(RecordsMediTrainV2Session.__tablename__ + ".id"))
+    session_id = db.Column(db.Integer(), db.ForeignKey("session.id"))
     subjectID = db.Column(db.String(50))
     sessionID = db.Column(db.String(55))
 
@@ -296,7 +296,7 @@ class RecordsMediTrainV2MiniSession(db.Model):
     endTime = db.Column(db.Integer())
     result = db.Column(db.Integer())
     startTime = db.Column(db.Integer())
-#    session_id = db.Column(db.Integer(), db.ForeignKey(RecordsMediTrainV2Session.__tablename__ + ".id"))
+    session_id = db.Column(db.Integer(), db.ForeignKey("session.id"))
     sessionID = db.Column(db.String(55))
     subjectID = db.Column(db.String(50))
 
