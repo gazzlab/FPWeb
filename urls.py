@@ -18,7 +18,7 @@ from database import (
   RecordsDat,
   RecordsMediTrain,
   RecordsMediTrainV2Session,
-  RecordsMediTrainV2Subject,
+  #RecordsMediTrainV2Subject,
   RecordsMediTrainV2Survey,
   RecordsMediTrainV2MiniSession,
   RecordsTrainCat,
