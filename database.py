@@ -228,7 +228,6 @@ class RecordsMediTrainV2Subject(db.Model):
     lastSyncTime = db.Column(db.Integer())
     meditationDuration = db.Column(db.Float())
     startTimestamp = db.Column(db.Integer())
-    surveys = db.relationship("RecordsMediTrainV2Survey", backref="subject")
 
     def __init__(self,
                  subjectID =-1.0,
@@ -259,7 +258,6 @@ class RecordsMediTrainV2Survey(db.Model):
     question2 = db.Column(db.Integer())
     question3 = db.Column(db.Integer())
     timestamp = db.Column(db.Integer())
-    subject_id = db.Column(db.Integer(), db.ForeignKey('subject.id'))
     session_id = db.Column(db.Integer(), db.ForeignKey('session.id'))
     subjectID = db.Column(db.String(50))
     sessionID = db.Column(db.String(55))
