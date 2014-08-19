@@ -188,6 +188,7 @@ class RecordsMediTrainV2Session(db.Model):
     
     def __init__(self,
                  sessionID = None,
+                 subjectID = None,
                  cumulativeID=-1.0,
                  day=-1.0,
                  endTimestamp=-1.0,
@@ -198,7 +199,8 @@ class RecordsMediTrainV2Session(db.Model):
                  duration=-1.0,
                  year=-1.0):
         log.debug('Creating MediTrain V2 Session record, sessionID: %r', sessionID)
-        self.sessionID = sessionID,
+        self.sessionID = sessionID
+        self.subjectID = subjectID
         self.cumulativeID = cumulativeID
         self.day = day
         self.duration = duration
