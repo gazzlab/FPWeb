@@ -285,7 +285,7 @@ class RecordsMediTrainV2Session(db.Model):
         self.startTimestamp = startTimestamp
         self.year = year
         self.miniSessionCount = miniSessionCount
-        log.debug(miniSessions)
+        log.debug("Meditrain V2 Session ID=%r miniSessions=%r",sessionID ,miniSessions)
         for miniSession in miniSessions:
             self.miniSessions.append(RecordsMediTrainV2MiniSession(miniSession))
         if(self.survey != None):
