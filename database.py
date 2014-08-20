@@ -172,7 +172,6 @@ class RecordsMediTrainV2Survey(db.Model):
     __tablename__ = 'meditrainTestSurvey'
 
     id = db.Column(db.Integer(), primary_key=True)
-
     surveyID = db.Column(db.String(55))
     complete = db.Column(db.Boolean())
     cumulativeID = db.Column(db.Integer())
@@ -211,7 +210,6 @@ class RecordsMediTrainV2MiniSession(db.Model):
     __tablename__ = 'meditrainTestMiniSession'
 
     id = db.Column(db.Integer(), primary_key=True)
-
     miniSessionID = db.Column(db.String(55))
     cumulativeID = db.Column(db.Integer())
     duration = db.Column(db.Float())
