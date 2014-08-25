@@ -169,7 +169,7 @@ class RecordsMediTrain(db.Model):
 class RecordsMediTrainV2Survey(db.Model):
     study_ID = 'testMeditrain'
 
-    __tablename__ = 'meditrainTestSurvey'
+    __tablename__ = 'meditrainSurvey'
 
     id = db.Column(db.Integer(), primary_key=True)
     surveyID = db.Column(db.String(55))
@@ -179,7 +179,7 @@ class RecordsMediTrainV2Survey(db.Model):
     question2 = db.Column(db.Integer())
     question3 = db.Column(db.Integer())
     timestamp = db.Column(db.Integer())
-    session_id = db.Column(db.Integer(), db.ForeignKey("meditrainTest.id"))
+    session_id = db.Column(db.Integer(), db.ForeignKey("meditrainSession.id"))
     subjectID = db.Column(db.String(50))
     sessionID = db.Column(db.String(55))
 
@@ -207,7 +207,7 @@ class RecordsMediTrainV2Survey(db.Model):
 class RecordsMediTrainV2MiniSession(db.Model):
     study_ID = 'testMeditrain'
 
-    __tablename__ = 'meditrainTestMiniSession'
+    __tablename__ = 'meditrainMiniSession'
 
     id = db.Column(db.Integer(), primary_key=True)
     miniSessionID = db.Column(db.String(55))
@@ -216,7 +216,7 @@ class RecordsMediTrainV2MiniSession(db.Model):
     endTime = db.Column(db.Integer())
     result = db.Column(db.Integer())
     startTime = db.Column(db.Integer())
-    session_id = db.Column(db.Integer(), db.ForeignKey("meditrainTest.id"))
+    session_id = db.Column(db.Integer(), db.ForeignKey("meditrainSession.id"))
     sessionID = db.Column(db.String(55))
     subjectID = db.Column(db.String(50))
 
@@ -243,7 +243,7 @@ class RecordsMediTrainV2Session(db.Model):
 
     study_ID = 'testMeditrain'
     
-    __tablename__ = 'meditrainTest'
+    __tablename__ = 'meditrainSession'
     
     id = db.Column(db.Integer(), primary_key=True)
 
@@ -294,7 +294,7 @@ class RecordsMediTrainV2Session(db.Model):
 #class RecordsMediTrainV2Subject(db.Model):
 #    study_ID = 'testMeditrain'
 #
-#    __tablename__ = 'meditrainTestSubject'
+#    __tablename__ = 'meditrainSubject'
 #
 #    id = db.Column(db.Integer(), primary_key=True)
 #
