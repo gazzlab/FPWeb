@@ -1,27 +1,37 @@
 {
-	"studyID": "testMeditrain",
-	"subjectID": "testSubject",
+	"studyID": "meditrain",
+	"subjectID": "testRussell",
 	"sessionCount": 1,
 	"data": [
 		{
-			"startTimestamp": 1408319880,
-			"cumulativeID": 3,
-			"endTimestamp": 1408319909,
-			"day": 17,
+			"startTimestamp": 1408941501,
+			"cumulativeID": 2,
+			"endTimestamp": 1408941550,
+			"day": 24,
 			"month": 8,
 			"year": 2014,
-			"subjectID": "testSubject",
-			"sessionID": "testSubject-3",
-			"miniSessionCount": 1,
+			"subjectID": "testRussell",
+			"sessionID": "testRussell-session2",
+			"miniSessionCount": 2,
 			"miniSessions": [{
 				"cumulativeID": 3,
-				"miniSessionID": "testSubject-3",
-				"duration": 24.2,
-				"endTime": 1408319909,
+				"miniSessionID": "testRussell-mini3",
+				"duration": 12.8,
+				"endTime": 1408941550,
+				"result": 1,
+				"startTime": 1408941530,
+				"subjectID": "testRussell",
+				"sessionID": "testRussell-session2"
+			}, {
+				"cumulativeID": 2,
+				"miniSessionID": "testRussell-mini2",
+				"duration": 16,
+				"endTime": 1408941527,
 				"result": 0,
-				"startTime": 1408319880,
-				"response": 0
+				"startTime": 1408941501,
+				"subjectID": "testRussell",
+				"sessionID": "testRussell-session2"
 			}]
 		}
 	]
-}
+} 

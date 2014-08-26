@@ -172,7 +172,7 @@ class RecordsMediTrainV2Survey(db.Model):
     __tablename__ = 'meditrainSurvey'
 
     id = db.Column(db.Integer(), primary_key=True)
-    surveyID = db.Column(db.String(55))
+    surveyID = db.Column(db.String(55), unique=True)
     complete = db.Column(db.Boolean())
     cumulativeID = db.Column(db.Integer())
     question1 = db.Column(db.Boolean())
@@ -210,7 +210,7 @@ class RecordsMediTrainV2MiniSession(db.Model):
     __tablename__ = 'meditrainMiniSession'
 
     id = db.Column(db.Integer(), primary_key=True)
-    miniSessionID = db.Column(db.String(55))
+    miniSessionID = db.Column(db.String(55), unique=True)
     cumulativeID = db.Column(db.Integer())
     duration = db.Column(db.Float())
     endTime = db.Column(db.Integer())
@@ -247,7 +247,7 @@ class RecordsMediTrainV2Session(db.Model):
     
     id = db.Column(db.Integer(), primary_key=True)
 
-    sessionID = db.Column(db.String(55))
+    sessionID = db.Column(db.String(55), unique=True)
     subjectID = db.Column(db.String(50))
 #    subject = db.relationship("RecordsMediTrainV2Subject", backref="sessions")
     miniSessions = db.relationship("RecordsMediTrainV2MiniSession", backref="session")
