@@ -288,8 +288,10 @@ class RecordsMediTrainV2Session(db.Model):
         log.debug("Meditrain V2 Session ID=%r miniSessions=%r",sessionID ,miniSessions)
         for miniSession in miniSessions:
             self.miniSessions.append(RecordsMediTrainV2MiniSession(**miniSession))
-        if(survey != None):
+        if survey != None:
             self.survey = RecordsMediTrainV2Survey(**survey)
+        else:
+            log.debug("Meditrain Survey Empty for SubjectID=%r survey=%r",subjectID, survey)
 
 #class RecordsMediTrainV2Subject(db.Model):
 #    study_ID = 'testMeditrain'
