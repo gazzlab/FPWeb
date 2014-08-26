@@ -1,37 +1,111 @@
 {
-	"studyID": "meditrain",
-	"subjectID": "testRussell",
-	"sessionCount": 1,
+	"studyID": "testMeditrain",
+	"subjectID": "testRussellTwo",
+	"sessionCount": 4,
 	"data": [
 		{
-			"startTimestamp": 1408941501,
+			"startTimestamp": 1409029853,
 			"cumulativeID": 2,
-			"endTimestamp": 1408941550,
-			"day": 24,
+			"endTimestamp": 1409029891,
+			"day": 25,
 			"month": 8,
 			"year": 2014,
-			"subjectID": "testRussell",
-			"sessionID": "testRussell-session2",
-			"miniSessionCount": 2,
+			"subjectID": "testRussellTwo",
+			"sessionID": "testRussellTwo-session2",
+			"miniSessionCount": 1,
+			"miniSessions": [{
+				"cumulativeID": 2,
+				"miniSessionID": "testRussellTwo-mini2",
+				"duration": 22,
+				"endTime": 1409029891,
+				"result": 1,
+				"startTime": 1409029853,
+				"subjectID": "testRussellTwo",
+				"sessionID": "testRussellTwo-session2"
+			}]
+		},
+		{
+			"startTimestamp": 1409029903,
+			"cumulativeID": 3,
+			"endTimestamp": 1409029933,
+			"day": 25,
+			"month": 8,
+			"year": 2014,
+			"subjectID": "testRussellTwo",
+			"sessionID": "testRussellTwo-session3",
+			"miniSessionCount": 1,
 			"miniSessions": [{
 				"cumulativeID": 3,
-				"miniSessionID": "testRussell-mini3",
-				"duration": 12.8,
-				"endTime": 1408941550,
-				"result": 1,
-				"startTime": 1408941530,
-				"subjectID": "testRussell",
-				"sessionID": "testRussell-session2"
-			}, {
-				"cumulativeID": 2,
-				"miniSessionID": "testRussell-mini2",
-				"duration": 16,
-				"endTime": 1408941527,
+				"miniSessionID": "testRussellTwo-mini3",
+				"duration": 24.2,
+				"endTime": 1409029933,
 				"result": 0,
-				"startTime": 1408941501,
-				"subjectID": "testRussell",
-				"sessionID": "testRussell-session2"
+				"startTime": 1409029903,
+				"subjectID": "testRussellTwo",
+				"sessionID": "testRussellTwo-session3"
 			}]
+		},
+		{
+			"startTimestamp": 1409029949,
+			"cumulativeID": 4,
+			"endTimestamp": 1409030021,
+			"day": 25,
+			"month": 8,
+			"year": 2014,
+			"subjectID": "testRussellTwo",
+			"sessionID": "testRussellTwo-session4",
+			"miniSessionCount": 2,
+			"miniSessions": [{
+				"cumulativeID": 4,
+				"miniSessionID": "testRussellTwo-mini4",
+				"duration": 19.36,
+				"endTime": 1409029980,
+				"result": 1,
+				"startTime": 1409029949,
+				"subjectID": "testRussellTwo",
+				"sessionID": "testRussellTwo-session4"
+			}, {
+				"cumulativeID": 5,
+				"miniSessionID": "testRussellTwo-mini5",
+				"duration": 21.296,
+				"endTime": 1409030021,
+				"result": 1,
+				"startTime": 1409029983,
+				"subjectID": "testRussellTwo",
+				"sessionID": "testRussellTwo-session4"
+			}]
+		},
+		{
+			"startTimestamp": 0,
+			"cumulativeID": 1,
+			"endTimestamp": 1409029839,
+			"day": 25,
+			"month": 8,
+			"year": 2014,
+			"subjectID": "testRussellTwo",
+			"sessionID": "testRussellTwo-session1",
+			"miniSessionCount": 1,
+			"miniSessions": [{
+				"cumulativeID": 1,
+				"miniSessionID": "testRussellTwo-mini1",
+				"duration": 20,
+				"endTime": 1409029839,
+				"result": 1,
+				"startTime": 1409029810,
+				"subjectID": "testRussellTwo",
+				"sessionID": "testRussellTwo-session1"
+			}],
+			"survey": {
+				"cumulativeID": 2,
+				"surveyID": "testRussellTwo-survey2",
+				"complete": 1,
+				"question1": 1,
+				"question2": 3,
+				"question3": 3,
+				"subjectID": "testRussellTwo",
+				"sessionID": "testRussellTwo-session1",
+				"timestamp": 1409029806
+			}
 		}
 	]
-} 
+}
