@@ -215,6 +215,8 @@ class RecordsMediTrainV2MiniSession(db.Model):
     duration = db.Column(db.Float())
     endTime = db.Column(db.Integer())
     result = db.Column(db.Integer())
+    responseDelay = db.Column(db.Integer())
+    responseTime = db.Column(db.Integer())
     startTime = db.Column(db.Integer())
     session_id = db.Column(db.Integer(), db.ForeignKey("meditrainSession.id"))
     sessionID = db.Column(db.String(55))
@@ -226,6 +228,8 @@ class RecordsMediTrainV2MiniSession(db.Model):
                  duration = -1.0,
                  endTime = -1.0,
                  result = -1.0,
+                 responseDelay = -1,
+	             responseTime = -1,
                  startTime = -1.0,
                  sessionID = None,
                  subjectID = None):
@@ -234,6 +238,8 @@ class RecordsMediTrainV2MiniSession(db.Model):
         self.cumulativeID = cumulativeID
         self.duration = duration
         self.endTime = endTime
+        self.responseDelay = responseDelay
+        self.responseTime = responseTime
         self.result = result
         self.startTime = startTime
         self.sessionID = sessionID
@@ -285,7 +291,6 @@ class RecordsMediTrainV2Session(db.Model):
         self.startTimestamp = startTimestamp
         self.year = year
         self.miniSessionCount = miniSessionCount
-        log.debug("Meditrain V2 Session ID=%r miniSessions=%r",sessionID ,miniSessions)
         for miniSession in miniSessions:
             self.miniSessions.append(RecordsMediTrainV2MiniSession(**miniSession))
         if survey != None:
